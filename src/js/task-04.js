@@ -4,11 +4,19 @@ const valueEl = document.querySelector("#value");
 let counterValue = 0;
 
 decrementBtn.addEventListener("click", () => {
-  counterValue--;
-  valueEl.textContent = counterValue;
+  if (counterValue > 0) {
+    counterValue--;
+    valueEl.textContent = counterValue;
+  }
+  if (counterValue === 0) {
+    decrementBtn.disabled = true;
+  }
 });
 
 incrementBtn.addEventListener("click", () => {
   counterValue++;
   valueEl.textContent = counterValue;
+  if (counterValue > 0) {
+    decrementBtn.disabled = false;
+  }
 });
